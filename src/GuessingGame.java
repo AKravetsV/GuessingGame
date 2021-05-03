@@ -14,6 +14,7 @@ public class GuessingGame extends JFrame {
     private JLabel lblOutput;
     private JPanel panelMain;
     static int theNumber;
+    private int numberOfTries;
 
     public GuessingGame() {
 
@@ -34,6 +35,7 @@ public class GuessingGame extends JFrame {
     public void checkGuess() {
         String guessText = this.txtGuess.getText();
         String message = "";
+        numberOfTries++;
 
         try {
             int guess = Integer.parseInt(guessText);
@@ -42,7 +44,7 @@ public class GuessingGame extends JFrame {
             } else if (guess > theNumber) {
                 message = guess + " is too high. Try again.";
             } else {
-                message = guess + " is correct. You win! Let's play again!";
+                message = guess + "  is correct. You win after " + numberOfTries + " tries!";
                 newGame();
             }
         } catch (Exception var7) {
