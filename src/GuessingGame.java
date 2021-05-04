@@ -57,14 +57,15 @@ public class GuessingGame extends JFrame {
 
     }
 
-    public static void newGame() {
+    public void newGame() {
         theNumber = (int)(Math.random() * 10.0D + 1.0D);
+        numberOfTries = 0;
         System.out.println(theNumber);
     }
 
     public static void main(String[] args) {
         GuessingGame theGame = new GuessingGame();
-        newGame();
+        theGame.newGame();
         theGame.setContentPane((new GuessingGame()).panelMain);
         theGame.setDefaultCloseOperation(3);
         theGame.setSize(new Dimension(550, 400));
