@@ -13,6 +13,7 @@ public class GuessingGame extends JFrame {
     private JTextField txtGuess;
     private JLabel lblOutput;
     private JPanel panelMain;
+    private JButton btnPlayAgain;
     static int theNumber;
     private int numberOfTries;
 
@@ -30,6 +31,12 @@ public class GuessingGame extends JFrame {
                 GuessingGame.this.checkGuess();
             }
         });
+        btnPlayAgain.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                newGame();
+            }
+        });
     }
 
     public void checkGuess() {
@@ -44,22 +51,22 @@ public class GuessingGame extends JFrame {
             } else if (guess > theNumber) {
                 message = guess + " is too high. Try again.";
             } else {
-                message = guess + "  is correct. You win after " + numberOfTries + " tries!";
-                newGame();
+                message = guess + " is correct. You win after " + numberOfTries + " tries!";
+                btnPlayAgain.setVisible(true);
             }
-        } catch (Exception var7) {
+        } catch (Exception e) {
             message = "Enter a whole number between 1 and 10.";
         } finally {
             this.lblOutput.setText(message);
             this.txtGuess.requestFocus();
             this.txtGuess.selectAll();
         }
-
     }
 
     public void newGame() {
         theNumber = (int)(Math.random() * 10.0D + 1.0D);
         numberOfTries = 0;
+        btnPlayAgain.setVisible(false);
         System.out.println(theNumber);
     }
 
